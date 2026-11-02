@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mesh07 — Réseau radio Meshtastic/MeshCore en Sud-Ardèche</title>
+<meta name="description" content="Réseau communautaire LoRa (Meshtastic/MeshCore) en Sud-Ardèche : principe, matériel, cartes, et pourquoi un réseau de messages sans opérateur ni Internet.">
+<style>
+  :root{
+    --bg:#0f1512; --panel:#16201b; --panel2:#1c2821;
+    --text:#eef2ef; --muted:#9fb3a8; --accent:#5fd896; --accent2:#3aa7a0;
+    --border:#2a3a32;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+  }
+  a{ color:var(--accent); }
+  header{
+    padding:56px 24px 40px; text-align:center;
+    background:radial-gradient(circle at 50% 0%, #1b2d22 0%, var(--bg) 70%);
+    border-bottom:1px solid var(--border);
+  }
+  header .tag{
+    display:inline-block; font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--accent); border:1px solid var(--accent); border-radius:999px;
+    padding:4px 14px; margin-bottom:18px;
+  }
+  header h1{ font-size:2.1rem; margin:0 0 10px; }
+  header p{ color:var(--muted); max-width:680px; margin:0 auto; font-size:1.05rem; }
+  nav.toc{
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:24px;
+  }
+  nav.toc a{
+    font-size:.85rem; text-decoration:none; color:var(--muted);
+    border:1px solid var(--border); border-radius:999px; padding:6px 14px;
+  }
+  nav.toc a:hover{ color:var(--accent); border-color:var(--accent); }
+  main{ max-width:960px; margin:0 auto; padding:40px 20px 80px; }
+  section{ margin-bottom:56px; scroll-margin-top:20px; }
+  h2{ font-size:1.4rem; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  h2 .num{ color:var(--accent); font-weight:700; }
+  .card{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:22px 24px; margin-bottom:16px;
+  }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+  @media (max-width:720px){ .grid3{ grid-template-columns:1fr; } }
+  .mini{
+    background:var(--panel2); border:1px solid var(--border); border-radius:12px;
+    padding:16px; text-align:center;
+  }
+  .mini .big{ font-size:1.6rem; font-weight:700; color:var(--accent); }
+  .mini .label{ color:var(--muted); font-size:.85rem; margin-top:4px; }
+  .note{
+    border-left:3px solid var(--accent2); background:var(--panel2);
+    padding:14px 18px; border-radius:0 10px 10px 0; color:var(--muted); font-size:.9rem;
+  }
+  .products{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+  @media (max-width:720px){ .products{ grid-template-columns:1fr; } }
+  .product{
+    background:var(--panel); border:1px solid var(--border); border-radius:16px;
+    padding:24px; display:flex; flex-direction:column; gap:12px;
+  }
+  .product .role{
+    font-size:.75rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent2); font-weight:600;
+  }
+  .product h3{ margin:0; font-size:1.15rem; }
+  .product .price{ font-size:1.4rem; font-weight:700; color:var(--accent); }
+  .product .desc{ color:var(--muted); font-size:.95rem; flex-grow:1; }
+  .product .meta{ font-size:.82rem; color:var(--muted); }
+  .product a.buy{
+    display:inline-block; text-align:center; margin-top:4px;
+    background:var(--accent); color:#0f1512; text-decoration:none;
+    font-weight:600; padding:10px 16px; border-radius:10px; font-size:.9rem;
+  }
+  .product a.buy:hover{ background:var(--accent2); color:#fff; }
+  ol.args{ padding-left:20px; color:var(--text); }
+  ol.args li{ margin-bottom:10px; }
+  ol.args li::marker{ color:var(--accent); font-weight:700; }
+  .maps{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  @media (max-width:720px){ .maps{ grid-template-columns:1fr; } }
+  .mapcard{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:20px;
+  }
+  .mapcard h3{ margin:0 0 6px; font-size:1.05rem; }
+  .mapcard p{ color:var(--muted); font-size:.9rem; margin:0 0 12px; }
+  .mapcard a{
+    font-size:.85rem; font-weight:600; text-decoration:none;
+    display:inline-block; padding:8px 14px; border:1px solid var(--accent);
+    border-radius:8px; color:var(--accent);
+  }
+  .mapcard a:hover{ background:var(--accent); color:#0f1512; }
+  .steps{ padding-left:20px; }
+  .steps li{ margin-bottom:8px; color:var(--muted); }
+  footer{
+    text-align:center; padding:30px; color:var(--muted); font-size:.85rem;
+    border-top:1px solid var(--border);
+  }
+  footer a{ color:var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">Initiative citoyenne · Sud-Ardèche</div>
+  <h1>Mesh07 — un réseau radio sans opérateur pour le Sud-Ardèche</h1>
+  <p>Un maillage de boîtiers LoRa (Meshtastic / MeshCore) qui permet d'envoyer des messages entre hameaux, sans réseau mobile ni Internet, et sans abonnement.</p>
+  <nav class="toc">
+    <a href="#principe">Le principe</a>
+    <a href="#pourquoi">Pourquoi ce réseau</a>
+    <a href="#materiel">Matériel</a>
+    <a href="#cartes">Cartes</a>
+    <a href="#rejoindre">Rejoindre / financer</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="principe">
+    <h2><span class="num">01</span> Le principe du réseau mesh</h2>
+    <div class="card">
+      <p>Chaque boîtier (« nœud ») envoie et <strong>relaie</strong> les messages des autres nœuds à portée radio. Pas besoin de réseau téléphonique, pas besoin d'Internet, pas d'abonnement : le réseau se construit de proche en proche, à mesure que des habitants installent des boîtiers.</p>
+      <p>La technologie utilisée s'appelle <strong>LoRa</strong> (Long Range) : une radio longue portée, très basse consommation, sur la bande libre <strong>868 MHz</strong>. Elle transporte de petits messages — textes, positions GPS — sur plusieurs kilomètres, davantage encore depuis un point haut.</p>
+      <div class="grid3">
+        <div class="mini"><div class="big">868 MHz</div><div class="label">bande radio libre, sans licence</div></div>
+        <div class="mini"><div class="big">0 €/mois</div><div class="label">aucun abonnement, aucune carte SIM</div></div>
+        <div class="mini"><div class="big">Relais</div><div class="label">chaque nœud étend la portée des autres</div></div>
+      </div>
+    </div>
+    <div class="note">
+      Deux protocoles existent sur ce matériel — <strong>Meshtastic</strong> et <strong>MeshCore</strong> — et ils sont <strong>incompatibles entre eux</strong>. Pour que les hameaux se parlent, il faut choisir le même protocole partout. Le collectif national <a href="https://gaulix.fr/" target="_blank" rel="noopener">Gaulix</a> publie des réglages harmonisés pour que les communautés françaises restent interopérables.
+    </div>
+  </section>
+
+  <section id="pourquoi">
+    <h2><span class="num">02</span> Pourquoi ce réseau (20 arguments)</h2>
+    <div class="card">
+      <ol class="args">
+        <li>Utilisable <strong>sans réseau mobile ni Internet</strong> — fonctionne quand les deux tombent.</li>
+        <li><strong>Aucun abonnement, aucune carte SIM</strong> — seul coût : le matériel, une fois.</li>
+        <li>Bande <strong>868 MHz libre</strong>, sans licence requise, cadre légal simple.</li>
+        <li><strong>Résilience en crise</strong> : fonctionne pendant tempêtes, incendies, inondations, coupures électriques.</li>
+        <li>Couvre les <strong>zones blanches</strong> (forêts, hameaux) que les opérateurs ne rentabilisent pas.</li>
+        <li>Un <strong>répéteur solaire autonome coûte environ 200 € HT</strong> — pas de facture d'électricité.</li>
+        <li>Un <strong>nœud personnel coûte entre 40 et 100 € HT</strong>.</li>
+        <li>Le matériel peut être <strong>fait maison</strong>, donc encore moins cher pour qui bricole.</li>
+        <li>Le réseau est <strong>maillé</strong> : chaque nœud relaie les messages des autres — plus il y a de nœuds, plus il porte loin.</li>
+        <li><strong>Aucune qualification technique requise</strong> pour installer un nœud ou un relais.</li>
+        <li>Certaines <strong>mises à jour se font à distance</strong> (OTA), sans réintervenir sur place.</li>
+        <li>En crise, permet de <strong>joindre les employés communaux et les réserves de sécurité civile</strong>.</li>
+        <li>Peut <strong>soulager les services d'urgence</strong> en diffusant l'info directement à la population.</li>
+        <li>Déjà utilisé concrètement par une <strong>collectivité territoriale en situation de crise</strong> (octobre 2025).</li>
+        <li>Testé grandeur réelle à <strong>La Réunion</strong> pour la communication décentralisée en cas de cyclone.</li>
+        <li>Déployé auprès de citoyens lors de la <strong>Journée Nationale de la Résilience</strong> (juillet 2025).</li>
+        <li>Déjà utilisé pour des usages concrets non liés à la crise : <strong>suivi de troupeaux en montagne</strong>, fermes connectées.</li>
+        <li>Un <strong>collectif national (Gaulix)</strong> existe déjà pour harmoniser les réglages entre communautés — on ne repart pas de zéro.</li>
+        <li>Gaulix <strong>conseille gratuitement</strong>, sans intérêt commercial, et peut mettre en relation avec des personnes compétentes à proximité.</li>
+        <li>Démarche déjà balisée pour une commune : identifier un point haut (château d'eau, pylône, forêt communale) → mobiliser des bénévoles → associer la population au maillage local.</li>
+      </ol>
+      <p class="meta" style="color:var(--muted); font-size:.85rem; margin-top:12px;">Sources : <a href="https://gaulix.fr/" target="_blank" rel="noopener">gaulix.fr</a> (association loi 1901).</p>
+    </div>
+  </section>
+
+  <section id="materiel">
+    <h2><span class="num">03</span> Matériel pour démarrer</h2>
+    <div class="products">
+
+      <div class="product">
+        <div class="role">Relais collectif — Meshtastic</div>
+        <h3>Heltec MeshTower V2</h3>
+        <div class="price">198,54 €</div>
+        <p class="desc">Nœud extérieur solaire 10 W, étanche IP66, GPS intégré. Le relais qu'on installe en point haut (toit, clocher, pylône) pour étendre la couverture radio sur tout un hameau — le matériel que financerait une cagnotte collective.</p>
+        <p class="meta">Protocole Meshtastic</p>
+        <a class="buy" href="https://www.passion-radio.fr/mesh-lora/meshtower-v2-3210.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
+      </div>
+
+      <div class="product">
+        <div class="role">Relais collectif — MeshCore</div>
+        <h3>SenseCAP Solar Node P1-Pro</h3>
+        <div class="price">106,16 €</div>
+        <p class="desc">Même fonction que le MeshTower (relais solaire autonome avec GPS), mais sur le protocole MeshCore. Illustre pourquoi le choix du protocole doit être tranché en groupe avant d'acheter du matériel.</p>
+        <p class="meta">Protocole MeshCore</p>
+        <a class="buy" href="https://www.passion-radio.fr/mesh-lora/100023690-3200.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
+      </div>
+
+      <div class="product">
+        <div class="role">Nœud individuel — carte LoRa nue</div>
+        <h3>TTGO T3S3 V1.2</h3>
+        <div class="price">31,68 €</div>
+        <p class="desc">Carte de développement ESP32-S3 avec puce LoRa SX1262, sans écran ni boîtier. La brique électronique minimale derrière un nœud mesh — abordable, bricolable, bon point de départ pour un premier boîtier individuel.</p>
+        <p class="meta">868 MHz</p>
+        <a class="buy" href="https://www.passion-radio.fr/module/t3s3-868-3042.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
+      </div>
+
+      <div class="product">
+        <div class="role">Carte de découverte — écosystème ESP32</div>
+        <h3>Heltec WiFi LoRa 32 V4</h3>
+        <div class="price">29,70 €</div>
+        <p class="desc">Carte ESP32 généraliste avec écran OLED, Bluetooth et Wi-Fi. À vérifier qu'elle embarque bien une puce LoRa adaptée au mesh avant de la présenter comme un nœud fonctionnel.</p>
+        <p class="meta">À confirmer avant achat groupé</p>
+        <a class="buy" href="https://www.passion-radio.fr/lpwan-iot/heltec-esp32-884.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
+      </div>
+
+    </div>
+    <p class="note" style="margin-top:16px;">Ces prix viennent d'un relevé sur <a href="https://www.passion-radio.fr/" target="_blank" rel="noopener">passion-radio.fr</a> (novembre 2026) — à vérifier avant tout achat groupé. La page <a href="https://gaulix.fr/materiel-hardware/" target="_blank" rel="noopener">Matériel de Gaulix</a> et son Telegram/Discord peuvent aussi conseiller sur le choix.</p>
+  </section>
+
+  <section id="cartes">
+    <h2><span class="num">04</span> Cartes du réseau</h2>
+    <div class="maps">
+      <div class="mapcard">
+        <h3>Carte officielle Meshtastic</h3>
+        <p>Vue mondiale des nœuds Meshtastic en ligne, hébergée sur meshmap.net.</p>
+        <a href="https://meshmap.net/" target="_blank" rel="noopener">Ouvrir la carte ↗</a>
+      </div>
+      <div class="mapcard">
+        <h3>Carte de Liam Cottle</h3>
+        <p>Carte alternative avec détails par nœud (version, batterie, dernière connexion).</p>
+        <a href="https://meshtastic.liamcottle.net/" target="_blank" rel="noopener">Ouvrir la carte ↗</a>
+      </div>
+      <div class="mapcard">
+        <h3>Carte officielle MeshCore</h3>
+        <p>Carte centrée sur la France pour le protocole MeshCore.</p>
+        <a href="https://meshcore.co.uk/map.html" target="_blank" rel="noopener">Ouvrir la carte ↗</a>
+      </div>
+      <div class="mapcard">
+        <h3>MeshCore Live Map</h3>
+        <p>Suit en direct les liens actifs entre nœuds MeshCore.</p>
+        <a href="https://meshcore.dev/map/" target="_blank" rel="noopener">Ouvrir la carte ↗</a>
+      </div>
+      <div class="mapcard">
+        <h3>Carte de couverture (wardriving)</h3>
+        <p>Alimentée par des relevés de terrain en mobilité — montre la portée réelle constatée, pas seulement la position des nœuds.</p>
+        <a href="https://gaulix.fr/cartes/" target="_blank" rel="noopener">Voir sur Gaulix ↗</a>
+      </div>
+      <div class="mapcard">
+        <h3>Carte officielle Gaulix</h3>
+        <p>Carte du réseau national coordonné par le collectif Gaulix.</p>
+        <a href="https://gaulix.fr/cartes/" target="_blank" rel="noopener">Voir sur Gaulix ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="rejoindre">
+    <h2><span class="num">05</span> Rejoindre ou financer un relais</h2>
+    <div class="card">
+      <p>Idée évoquée : <strong>1 € par personne et par hameau</strong> pour mutualiser l'achat d'un relais solaire. Démarche inspirée de la page <a href="https://gaulix.fr/docs-parametrage/collectivites-gaulix-peut-vous-aider/" target="_blank" rel="noopener">Collectivités de Gaulix</a> :</p>
+      <ol class="steps">
+        <li>S'accorder sur le protocole (Meshtastic ou MeshCore) avant tout achat groupé.</li>
+        <li>Identifier les points hauts disponibles dans chaque hameau (toit, château d'eau, pylône, clocher).</li>
+        <li>Mobiliser des bénévoles pour l'installation — aucune qualification technique requise.</li>
+        <li>Choisir le matériel et les réglages avec l'aide de la communauté (Gaulix, Telegram, Discord).</li>
+        <li>Associer les habitants à la construction du maillage local.</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Initiative citoyenne Meshtastic/MeshCore Sud-Ardèche (07) · Contenu technique : <a href="https://gaulix.fr/" target="_blank" rel="noopener">gaulix.fr</a> · Matériel et prix : <a href="https://www.passion-radio.fr/" target="_blank" rel="noopener">passion-radio.fr</a> (à vérifier avant achat)
+</footer>
+
+</body>
+</html>
