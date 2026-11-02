@@ -124,8 +124,9 @@
   <section id="principe">
     <h2><span class="num">01</span> Le principe du réseau mesh</h2>
     <div class="card">
-      <p>Chaque boîtier (« nœud ») envoie et <strong>relaie</strong> les messages des autres nœuds à portée radio. Pas besoin de réseau téléphonique, pas besoin d'Internet, pas d'abonnement : le réseau se construit de proche en proche, à mesure que des habitants installent des boîtiers.</p>
-      <p>La technologie utilisée s'appelle <strong>LoRa</strong> (Long Range) : une radio longue portée, très basse consommation, sur la bande libre <strong>868 MHz</strong>. Elle transporte de petits messages — textes, positions GPS — sur plusieurs kilomètres, davantage encore depuis un point haut.</p>
+      <p>Un réseau de téléphonie classique repose sur des antennes-relais reliées à un opérateur : sans lui, plus rien ne passe. Un réseau mesh fonctionne à l'inverse, sans aucun centre : chaque boîtier (« nœud ») envoie ses propres messages et <strong>relaie</strong> aussi ceux des autres nœuds à portée radio, qui eux-mêmes relaient plus loin. Le réseau se construit de proche en proche, un boîtier après l'autre, à mesure que des habitants s'équipent — personne ne le possède, personne ne peut le couper.</p>
+      <p>La technologie radio utilisée s'appelle <strong>LoRa</strong> (Long Range) : une radio longue portée, très basse consommation, qui émet sur la bande libre <strong>868 MHz</strong> — la même famille de fréquences que certains capteurs météo ou vannes d'irrigation, utilisable sans licence ni démarche administrative. Un boîtier LoRa fonctionne plusieurs jours, parfois plusieurs semaines, sur une seule charge de batterie, et encore plus longtemps avec un petit panneau solaire.</p>
+      <p>En contrepartie de cette portée et de cette autonomie, le débit est volontairement très faible : LoRa transporte des messages texte courts et des positions GPS, pas des photos, pas des appels vocaux, pas de flux vidéo. C'est un réseau fait pour dire « on est là, tout va bien » ou « besoin d'aide, voici où », pas pour remplacer un smartphone au quotidien. La portée d'un nœud isolé, au niveau du sol et en terrain vallonné comme le Sud-Ardèche, reste de l'ordre d'un à quelques kilomètres ; installé en point haut (toit, clocher, sommet dégagé), un même boîtier peut porter à dix kilomètres ou davantage, et surtout servir de relais pour tous les nœuds plus bas dans la vallée.</p>
       <div class="grid3">
         <div class="mini"><div class="big">868 MHz</div><div class="label">bande radio libre, sans licence</div></div>
         <div class="mini"><div class="big">0 €/mois</div><div class="label">aucun abonnement, aucune carte SIM</div></div>
@@ -138,7 +139,7 @@
   </section>
 
   <section id="pourquoi">
-    <h2><span class="num">02</span> Pourquoi ce réseau (20 arguments)</h2>
+    <h2><span class="num">02</span> Pourquoi ce réseau (10 arguments)</h2>
     <div class="card">
       <ol class="args">
         <li>Utilisable <strong>sans réseau mobile ni Internet</strong> — fonctionne quand les deux tombent.</li>
@@ -146,21 +147,11 @@
         <li>Bande <strong>868 MHz libre</strong>, sans licence requise, cadre légal simple.</li>
         <li><strong>Résilience en crise</strong> : fonctionne pendant tempêtes, incendies, inondations, coupures électriques.</li>
         <li>Couvre les <strong>zones blanches</strong> (forêts, hameaux) que les opérateurs ne rentabilisent pas.</li>
-        <li>Un <strong>répéteur solaire autonome coûte environ 200 € HT</strong> — pas de facture d'électricité.</li>
-        <li>Un <strong>nœud personnel coûte entre 40 et 100 € HT</strong>.</li>
-        <li>Le matériel peut être <strong>fait maison</strong>, donc encore moins cher pour qui bricole.</li>
-        <li>Le réseau est <strong>maillé</strong> : chaque nœud relaie les messages des autres — plus il y a de nœuds, plus il porte loin.</li>
+        <li><strong>Coût faible</strong> : environ 200 € HT pour un répéteur solaire, 40 à 100 € HT pour un nœud personnel, et rien ensuite.</li>
         <li><strong>Aucune qualification technique requise</strong> pour installer un nœud ou un relais.</li>
-        <li>Certaines <strong>mises à jour se font à distance</strong> (OTA), sans réintervenir sur place.</li>
-        <li>En crise, permet de <strong>joindre les employés communaux et les réserves de sécurité civile</strong>.</li>
-        <li>Peut <strong>soulager les services d'urgence</strong> en diffusant l'info directement à la population.</li>
-        <li>Déjà utilisé concrètement par une <strong>collectivité territoriale en situation de crise</strong> (octobre 2025).</li>
-        <li>Testé grandeur réelle à <strong>La Réunion</strong> pour la communication décentralisée en cas de cyclone.</li>
-        <li>Déployé auprès de citoyens lors de la <strong>Journée Nationale de la Résilience</strong> (juillet 2025).</li>
-        <li>Déjà utilisé pour des usages concrets non liés à la crise : <strong>suivi de troupeaux en montagne</strong>, fermes connectées.</li>
-        <li>Un <strong>collectif national (Gaulix)</strong> existe déjà pour harmoniser les réglages entre communautés — on ne repart pas de zéro.</li>
-        <li>Gaulix <strong>conseille gratuitement</strong>, sans intérêt commercial, et peut mettre en relation avec des personnes compétentes à proximité.</li>
-        <li>Démarche déjà balisée pour une commune : identifier un point haut (château d'eau, pylône, forêt communale) → mobiliser des bénévoles → associer la population au maillage local.</li>
+        <li>Déjà éprouvé en conditions réelles : une <strong>collectivité en crise</strong> (octobre 2025), un test cyclone à <strong>La Réunion</strong>, et la <strong>Journée Nationale de la Résilience</strong> (juillet 2025).</li>
+        <li>Un <strong>collectif national (Gaulix)</strong> existe déjà pour harmoniser les réglages entre communautés — on ne repart pas de zéro et on peut se faire conseiller gratuitement.</li>
+        <li>Démarche déjà balisée pour une commune ou un hameau : identifier un point haut (château d'eau, pylône, clocher) → mobiliser des bénévoles → choisir le matériel → associer la population au maillage local.</li>
       </ol>
       <p class="meta" style="color:var(--muted); font-size:.85rem; margin-top:12px;">Sources : <a href="https://gaulix.fr/" target="_blank" rel="noopener">gaulix.fr</a> (association loi 1901).</p>
     </div>
