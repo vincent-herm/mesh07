@@ -78,6 +78,17 @@
     font-weight:600; padding:10px 16px; border-radius:10px; font-size:.9rem;
   }
   .product a.buy:hover{ background:var(--accent2); color:#fff; }
+  .power{
+    background:var(--panel2); border:1px solid var(--border); border-radius:10px;
+    padding:12px 14px; font-size:.84rem; color:var(--muted);
+  }
+  .power .power-title{
+    color:var(--accent2); font-weight:600; font-size:.78rem;
+    letter-spacing:.04em; text-transform:uppercase; margin-bottom:6px; display:block;
+  }
+  .power ul{ margin:0; padding-left:18px; }
+  .power li{ margin-bottom:3px; }
+  .power strong{ color:var(--text); }
   ol.args{ padding-left:20px; color:var(--text); }
   ol.args li{ margin-bottom:10px; }
   ol.args li::marker{ color:var(--accent); font-weight:700; }
@@ -167,6 +178,15 @@
         <div class="price">198,54 €</div>
         <p class="desc">Nœud extérieur solaire 10 W, étanche IP66, GPS intégré. Le relais qu'on installe en point haut (toit, clocher, pylône) pour étendre la couverture radio sur tout un hameau — le matériel que financerait une cagnotte collective.</p>
         <p class="meta">Protocole Meshtastic</p>
+        <div class="power">
+          <span class="power-title">Alimentation</span>
+          <ul>
+            <li><strong>Batterie :</strong> 3 cellules Li-ion 2800 mAh intégrées (8400 mAh au total)</li>
+            <li><strong>Panneau solaire :</strong> fourni, 18 V / 10 W (320×230 mm), connecteur étanche</li>
+            <li><strong>Charge :</strong> entrée DC 18-24 V, courant max 1,5 A ; aussi rechargeable en USB-C (USB-PD 20 V)</li>
+            <li>Plage de fonctionnement -20 °C à +60 °C — tient l'hiver ardéchois</li>
+          </ul>
+        </div>
         <a class="buy" href="https://www.passion-radio.fr/mesh-lora/meshtower-v2-3210.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
       </div>
 
@@ -176,6 +196,15 @@
         <div class="price">83,29 €</div>
         <p class="desc">Même fonction que le MeshTower (relais solaire autonome), en version plus compacte et moins chère, sur le protocole Meshtastic. Bonne alternative d'entrée de gamme pour équiper un premier point haut.</p>
         <p class="meta">Protocole Meshtastic</p>
+        <div class="power">
+          <span class="power-title">Alimentation</span>
+          <ul>
+            <li><strong>Panneau solaire :</strong> intégré au boîtier, avec circuit de charge interne</li>
+            <li><strong>Batterie :</strong> 4 accus Li-ion 18650 (non fournis — à acheter à part)</li>
+            <li>Gestion de charge intelligente annoncée, fonctionnement 24/7</li>
+            <li>Capacité, tension de charge et autonomie <strong>non précisées</strong> sur la fiche — à demander avant achat groupé</li>
+          </ul>
+        </div>
         <a class="buy" href="https://www.passion-radio.fr/mesh-lora/114993643-3199.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
       </div>
 
@@ -185,6 +214,14 @@
         <div class="price">31,68 €</div>
         <p class="desc">Carte de développement ESP32-S3 avec puce LoRa SX1262, sans écran ni boîtier. La brique électronique minimale derrière un nœud mesh — abordable, bricolable, bon point de départ pour un premier boîtier individuel.</p>
         <p class="meta">868 MHz</p>
+        <div class="power">
+          <span class="power-title">Alimentation</span>
+          <ul>
+            <li><strong>Alimentation :</strong> 3,3-5 V via USB-C uniquement</li>
+            <li><strong>Batterie :</strong> ni support ni connecteur batterie/solaire sur cette carte nue</li>
+            <li>Pour un usage autonome, prévoir un boîtier avec batterie externe et régulateur séparés</li>
+          </ul>
+        </div>
         <a class="buy" href="https://www.passion-radio.fr/module/t3s3-868-3042.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
       </div>
 
@@ -194,6 +231,15 @@
         <div class="price">29,70 €</div>
         <p class="desc">Carte ESP32 généraliste avec écran OLED, Bluetooth et Wi-Fi. À vérifier qu'elle embarque bien une puce LoRa adaptée au mesh avant de la présenter comme un nœud fonctionnel.</p>
         <p class="meta">À confirmer avant achat groupé</p>
+        <div class="power">
+          <span class="power-title">Alimentation</span>
+          <ul>
+            <li><strong>Trois sources possibles en même temps :</strong> USB-C 5 V, batterie LiPo/Li-Ion, panneau solaire</li>
+            <li><strong>Batterie :</strong> cellule unique 3,7 V (connecteur SH1.25-2P), capacité max non précisée</li>
+            <li><strong>Panneau solaire :</strong> connecteur dédié SH1.25-2P, pour panneau 4,7 à 6 V</li>
+            <li>Consommation : ~20 µA en veille, 290 à 750 mA en émission LoRa selon la puissance</li>
+          </ul>
+        </div>
         <a class="buy" href="https://www.passion-radio.fr/lpwan-iot/heltec-esp32-884.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
       </div>
 
@@ -203,6 +249,15 @@
         <div class="price">33,53 € <span style="font-size:.9rem; font-weight:400; color:var(--muted); text-decoration:line-through;">47,90 €</span></div>
         <p class="desc">Carte 433/868 MHz avec GPS intégré, écran OLED et Bluetooth/WiFi. Livrée avec un firmware SoftRF, pas Meshtastic : à réflasher avant usage. Bon compromis prix/fonctions pour un premier nœud personnel avec position GPS.</p>
         <p class="meta">À réflasher en Meshtastic · promo -30%</p>
+        <div class="power">
+          <span class="power-title">Alimentation</span>
+          <ul>
+            <li><strong>Batterie :</strong> emplacement prévu, mais batterie et câble micro-USB <strong>non fournis</strong></li>
+            <li><strong>Panneau solaire :</strong> non mentionné sur cette carte — pas de circuit de charge solaire</li>
+            <li>Consommation : 10-14 mA en veille/réception, jusqu'à 120 mA en émission (+20 dBm)</li>
+            <li>Alimentation via micro-USB (câble non fourni) ou batterie externe compatible</li>
+          </ul>
+        </div>
         <a class="buy" href="https://www.passion-radio.fr/module/lora-gps-898.html" target="_blank" rel="noopener">Voir la fiche produit ↗</a>
       </div>
 
